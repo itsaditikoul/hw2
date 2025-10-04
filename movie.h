@@ -10,7 +10,7 @@ class Movie : public Product {
 public:
     // movie shld have name, price, qty, genre, rating 
 
-    Clothing(const std::string& name, double price, int qty, 
+    Movie(const std::string& name, double price, int qty, 
               const std::string& genre, const std::string& rating);
 
     std::set<std::string> keywords() const;

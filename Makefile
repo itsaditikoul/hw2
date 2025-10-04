@@ -23,11 +23,11 @@ product_parser.o: product_parser.cpp product_parser.h product.h
 util.o: util.cpp util.h
 	$(CXX) $(CXXFLAGS) $(DEFS) -o $@ -c util.cpp
 book.o: book.cpp book.h product.h util.h
-  $(CXX) $(CXXFLAGS) $(DEFS) -o $@ -c book.cpp
+	$(CXX) $(CXXFLAGS) $(DEFS) -o $@ -c book.cpp
 clothing.o: clothing.cpp clothing.h product.h util.h
-  $(CXX) $(CXXFLAGS) $(DEFS) -o $@ -c clothing.cpp
+	$(CXX) $(CXXFLAGS) $(DEFS) -o $@ -c clothing.cpp
 movie.o: movie.cpp movie.h product.h util.h
-  $(CXX) $(CXXFLAGS) $(DEFS) -o $@ -c movie.cpp
+	$(CXX) $(CXXFLAGS) $(DEFS) -o $@ -c movie.cpp
 
 
 clean:

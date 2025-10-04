@@ -130,6 +130,8 @@ std::string ProductBookParser::categoryID()
  */
 Product* ProductBookParser::makeProduct()
 {
+  // construct a book w parsed common fields + book spec fields
+  return new Book(prodName_, price_, qty_, isbn_, author_);
 
 
 }
@@ -185,6 +187,8 @@ std::string ProductClothingParser::categoryID()
  */
 Product* ProductClothingParser::makeProduct()
 {
+    // construct a clothing w parsed common fields + clohting spec fields
+  return new Clothing(prodName_, price_, qty_, size_, brand_);
 
 
 
@@ -245,6 +249,8 @@ std::string ProductMovieParser::categoryID()
  */
 Product* ProductMovieParser::makeProduct()
 {
+    // construct a movie w parsed common fields + movie spec fields
+  return new Movie(prodName_, price_, qty_, genre_, rating_);
 
 
 }

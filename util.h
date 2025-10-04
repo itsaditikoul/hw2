@@ -13,7 +13,7 @@
 template <typename T>
 std::set<T> setIntersection(std::set<T>& s1, std::set<T>& s2)
 {
-  std:set<T> result;
+  std::set<T> result;
   // loop thru set
   std::set<T>* small=(s1.size()<s2.size()) ? &s1 : &s2;
   std::set<T>* large=(s1.size()<s2.size()) ? &s2 : &s1;
