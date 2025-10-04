@@ -25,7 +25,7 @@ void MyDataStore::addProduct(Product* p) {
 
   for(string k : keys){
     k=convToLower(k);
-    keywordMap_(k).insert(p);
+    keywordMap_[k].insert(p);
   }
 }
 
@@ -97,24 +97,24 @@ void MyDataStore::addToCart(const string& username, Product* p) {
 }
 
 //view cart
-void MyDataStore::viewCart(const string& uername) const {
+void MyDataStore::viewCart(const string& username) const {
   string uname = convToLower(username);
+  if (users_.find(uname) == users_.end()) {
+    cout << "Invalid username" << endl;
+    return;
+  }
   auto it = carts_.find(uname);
-  if(users_.find(uname) == users_.end()){
-    cout << "Invalid username" <<endl;
-    return;
+  if (it == carts_.end() || it->second.empty()) {
+    return; 
   }
-
-  if ( it == carts_.end() || it->second.empty() ) {
-    return;
-  }
-  int idx=1;
-  for(Product* p : it->second){
-    cout<<"Item "<<idx<<": " << endl ;
-    cout<< p->displayString() << endl;
+  int idx = 1;
+  for (Product* p : it->second) {
+    cout << "Item " << idx << endl;
+    cout << p->displayString() << endl;
     idx++;
   }
 }
+
 
 
 
@@ -141,7 +141,7 @@ void MyDataStore::buyCart(const string& username) {
     }
   }
 
-  cart = remaining;
+  carts_[uname] = remaining;
 }
 
 

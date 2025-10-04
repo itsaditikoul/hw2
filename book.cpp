@@ -1,4 +1,10 @@
 #include "book.h"
+#include <cstdio>
+static std::string money(double x) {
+  char buf[64];
+  std::snprintf(buf, sizeof(buf), "%.2f", x);
+  return std::string(buf);
+}
 using namespace std;
 
 Book::Book(const std::string& name, double price, int qty, 
@@ -9,7 +15,7 @@ set<string> Book::keywords() const {
   set<string> keys = parseStringToWords(name_);
   set<string> auth = parseStringToWords(author_);
   keys = setUnion(keys,auth);
-  keys.insert(isbn_); // bc isbn is supp to be used verbatim
+  keys.insert(convToLower(isbn_)); // bc isbn is supp to be used verbatim
 
 
   return keys;
@@ -17,8 +23,8 @@ set<string> Book::keywords() const {
 
 string Book::displayString() const {
   string result = name_ + "\n";
-  result += "Author: " + author_ + "ISBN: " + isbn_ + "\n";
-  result += std::to_string(price_) + " " + std::to_string(qty_) + " left.";
+  result += "Author: " + author_ + " ISBN: " + isbn_ + "\n";
+  result += money(price_) + " " + std::to_string(qty_) + " left.";
 
 
   return result;

@@ -104,21 +104,21 @@ int main(int argc, char* argv[])
 	    /* Add support for other commands here */
 
             else if (cmd == "ADD") {
-              string uname;
-              int hitIndex;
-              if ( ss >> uname>>hitIndex) {
-                if(hitIndex<=0 || hitIndex > (int)hits.size()) {
-                  cout <<"Invalid request" << endl;
+                string username;
+                int hitIndex;
+                if (!(ss >> username >> hitIndex)) {
+                    cout << "Invalid request" << endl;
+                }
+                else if (hitIndex < 1 || hitIndex > (int)hits.size()) {
+                    cout << "Invalid request" << endl;
                 }
                 else {
-                  ds.addToCart(uname,hits[hitIndex-1]);
-
+                    // username validity checked inside addtocart
+                    ds.addToCart(username, hits[hitIndex-1]);
                 }
-              }
-              else {
-                cout << "Invalid request" << endl;
-              }
             }
+
+
 
             else if (cmd == "VIEWCART") {
               string uname;
